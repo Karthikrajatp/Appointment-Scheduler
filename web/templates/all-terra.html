@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nbyula</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+    body {
+      background: linear-gradient(135deg, #412ba2, #d21b8f);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      color: #ffffff;
+      font-family: Calibri, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+    header {
+      background: linear-gradient(135deg, #412ba2, #d21b8f);
+      color: #ffffff;
+      text-align: center;
+      padding: 5px;
+      font-size: 40px;
+      font-family: Calibri, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    .wrapper {
+      padding: 10px;
+      flex: 50%;
+    }
+
+    .databox {
+      display: flex;
+      padding: 10px;
+      border: 1px solid rgb(223, 220, 220);
+      border-radius: 5px;
+      justify-content: space-between;
+    }
+  </style>
+  <body>
+    <header>Nbyula</header>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand"
+            ><b><u>Welcome {{  current_user.username  }}!!!</u></b></a
+          >
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="/all-terraformers"><b>All Terraformers</b></a>
+          </li>
+          <li>
+            <a href="/available-terraformers"><b>Available Terraformers</b></a>
+          </li>
+          <li>
+            <a href="/appointment-list"><b>Appointments</b></a>
+          </li>
+          <li>
+            <a href="/profile"><b>Profile</b></a>
+          </li>
+          <li>
+            <a href="/logout"><b>Logout</b></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <br />
+    <br />
+    <div class="whole">
+      {%for user in data%}
+      <div class="wrapper">
+        <div class="databox">
+          <p class="datatext">
+            {{"Terraformer Name : "}} {{user.username}} <br />
+            {{"Terraformer Designation : "}} {{user.userdesignation}} <br />
+            {{"Terraformer Email : "}} {{user.email}} <br />
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

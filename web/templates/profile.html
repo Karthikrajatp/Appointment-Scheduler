@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nbyula</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+    body {
+      background: linear-gradient(135deg, #412ba2, #d21b8f);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      color: #ffffff;
+      font-family: Calibri, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+    header {
+      background: linear-gradient(135deg, #412ba2, #d21b8f);
+      color: #ffffff;
+      text-align: center;
+      padding: 5px;
+      font-size: 40px;
+      font-family: Calibri, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    .wrapper {
+      padding: 10px;
+      flex: 50%;
+    }
+
+    .databox {
+      display: flex;
+      padding: 10px;
+      border: 1px solid rgb(223, 220, 220);
+      border-radius: 5px;
+      justify-content: space-between;
+    }
+    h1 {
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+      }
+      .box {
+        width: 380px;
+        height: 420px;
+        background: #ffffff;
+        color: #020202;
+        box-sizing: border-box;
+        padding: 70px 30px;
+        border-radius: 15px;
+      }
+
+      .box p {
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+      }
+
+      .box input {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .box input[type="text"],
+      input[type="password"] {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        border-bottom-width: 2px;
+        outline: none;
+        height: 40px;
+        color: #000000;
+        font-size: 16px;
+      }
+
+      .box input[type="submit"] {
+        border: none;
+        outline: none;
+        height: 40px;
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .box input[type="submit"]:hover {
+        cursor: pointer;
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        color: #000;
+      }
+  </style>
+
+  <body>
+    <header>Nbyula</header>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand"
+            ><b><u>Welcome {{  current_user.username  }}!!!</u></b></a
+          >
+        </div>
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/all-terraformers"><b>All Terraformers</b></a>
+          </li>
+          <li>
+            <a href="/available-terraformers"><b>Available Terraformers</b></a>
+          </li>
+          <li>
+            <a href="/appointment-list"><b>Appointments</b></a>
+          </li>
+          <li class="active">
+            <a href="/profile"><b>Profile</b></a>
+          </li>
+          <li>
+            <a href="/logout"><b>Logout</b></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <br />
+    <br />
+    <div class="wrapper">
+      <div class="databox">
+        <div class="data">
+          <h3>UserName</h3>
+          <p>{{ current_user.username }}</p>
+        </div>
+        <div class="data">
+          <h3>Email</h3>
+          <p>{{ current_user.email }}</p>
+        </div>
+        <div class="data">
+          <h3>Availability</h3>
+          <p>{{ current_user.availability }}</p>
+        </div>
+      </div>
+
+      <br>
+      <br>
+      <center>
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category,message in messages %}
+        <p style="color: rgb(255, 255, 255);font-size: 60px;">{{ message }}!!</p>
+        {% endfor %} {% endif %} {% endwith %}
+      </center>
+      
+
+      <center>
+    <div>
+      <center><h1>AvailabilityChange</h1></center>
+      <div class="box">
+        <form action="/availchange" name="availform" method="post">
+          <p>Enter 'True' or 'False' based on your Availability</p>
+          <input type="text" name="avail" placeholder="Enter 'True' or 'False'" />
+          <input type="submit" name="" value="Change" />
+        </form>
+        
+      </div>
+
+      <br>
+      <br>
+
+      <center><h1>PasswordChange</h1></center>
+      <div class="box">
+        <form action="/profilechange" name="passwordform" method="post">
+          <p>CurrentPassword</p>
+          <input type="password" name="currentpass" placeholder="Enter your CurrentPassword" />
+          <p>NewPassword</p>
+          <input type="password" name="newpass" placeholder="Enter your NewPassword" />
+          <p>Repeat - NewPassword</p>
+          <input type="password" name="renewpass" placeholder="Repeat your NewPassword" />
+          <input type="submit" name="" value="Change" />
+        </form>
+        
+      </div>
+
+      <br>
+      <br>
+
+      <center><h1>UserNameChange</h1></center>
+      <div  class="box">
+        <form action="/namechange" name="nameform" method="post">
+          <p>CurrentUsername</p>
+          <input type="text" name="currentname" placeholder="Enter your CurrentUsername" />
+          <p>NewUsername</p>
+          <input type="text" name="newname" placeholder="Enter your NewUsername" />
+          <input type="submit" name="" value="Change" />
+        </form>
+      </div>
+    </div>
+  </center>
+
+  </body>
+</html>
