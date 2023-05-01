@@ -56,9 +56,11 @@ def profilechange():
 
     if not check_password_hash(current_user.password,current_password):
         flash('Invalid current password')
+        return redirect('/profile')
            
     if new_password != confirm_password:
         flash('New password and confirmation do not match')
+        return redirect('/profile')
         
     current_user.password = generate_password_hash(new_password,method='sha256')
     db.session.commit()
@@ -74,6 +76,7 @@ def namechange():
 
     if current_name == new_name:
         flash('Username unchanged')
+        return redirect('/profile')
     current_user.username = new_name
     db.session.commit()
     flash('Username updated successfully')
