@@ -76,7 +76,7 @@ def namechange():
 
     if current_name == new_name:
         flash('Username unchanged')
-        
+        redirect redirect('/profile')
     current_user.username = new_name
     db.session.commit()
     flash('Username updated successfully')
