@@ -97,6 +97,12 @@
         background: linear-gradient(135deg, #71b7e6, #9b59b6);
         color: #000;
       }
+      .profile-features{
+        margin-top: 5%;
+        display: flex;
+        gap:20px;
+        justify-content: center ;
+      }
   </style>
 
   <body>
@@ -156,9 +162,10 @@
       
 
       <center>
-    <div>
-      <center><h1>AvailabilityChange</h1></center>
+    <div class="profile-features">
+      
       <div class="box">
+        <center><h1>AvailabilityChange</h1></center>
         <form action="/availchange" name="availform" method="post">
           <p>Enter 'True' or 'False' based on your Availability</p>
           <input type="text" name="avail" placeholder="Enter 'True' or 'False'" />
@@ -170,8 +177,9 @@
       <br>
       <br>
 
-      <center><h1>PasswordChange</h1></center>
+      
       <div class="box">
+        <center><h1>PasswordChange</h1></center>
         <form action="/profilechange" name="passwordform" method="post">
           <p>CurrentPassword</p>
           <input type="password" name="currentpass" placeholder="Enter your CurrentPassword" />
@@ -187,8 +195,9 @@
       <br>
       <br>
 
-      <center><h1>UserNameChange</h1></center>
+      
       <div  class="box">
+        <center><h1>UserNameChange</h1></center>
         <form action="/namechange" name="nameform" method="post">
           <p>CurrentUsername</p>
           <input type="text" name="currentname" placeholder="Enter your CurrentUsername" />
