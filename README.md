@@ -1,5 +1,5 @@
 # nbyula-assignment1
-### An application used to track the available hours of their colleagues and makes use of their availability into Appointments.
+### Using this application, terraformers can track the availability of other terraformers and use that information to schedule appointments.
 
 
 This project was created using
