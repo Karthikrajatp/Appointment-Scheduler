@@ -1,7 +1,5 @@
-# nbyula-assignment1
-### Using this application, terraformers can track the availability of other terraformers and use that information to schedule appointments.
-
-
+# Appointment Scheduler
+### Using this application, Employees have the ability to monitor the availability of their fellow colleagues, which empowers them to efficiently schedule appointments and coordinate their work effectively.
 This project was created using
  <p align="center">
   <a href="#">
